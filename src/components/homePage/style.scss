@@ -27,18 +27,19 @@
   flex: 3;
 }
 
-h1 {
+.title {
   color: $pink;
   margin-bottom: 25px;
 }
 
 .sub-title {
+  margin-top: 20px;
   color: $violet;
   padding: 5px 30px;
   background-color: $lavender-dark;
 }
 
-h2 {
+.rateLabel {
   margin-top: 15px;
   text-decoration: underline;
   line-height: 1.2;

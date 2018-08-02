@@ -1,12 +1,12 @@
 <div class="homePage">
   <div class="rateArea">
     <div class="rateText">
-      <h1>FRONT-END SKILL TREE</h1>
+      <h1 class="title">FRONT-END SKILL TREE</h1>
       <span class="sub-title">CURRENT RANK</span>
-      <h2 v-if="nowRate==0">FRONT-END NOOB</h2>
-      <h2 v-if="nowRate==1">FRONT-END Beginnner</h2>
-      <h2 v-if="nowRate==2">FRONT-END Developer</h2>
-      <h2 v-if="nowRate==3">FRONT-END Master</h2>
+      <h2 class="rateLabel" v-if="nowRate==0">FRONT-END NOOB</h2>
+      <h2 class="rateLabel" v-if="nowRate==1">FRONT-END Beginnner</h2>
+      <h2 class="rateLabel" v-if="nowRate==2">FRONT-END Developer</h2>
+      <h2 class="rateLabel" v-if="nowRate==3">FRONT-END Master</h2>
     </div>
     <div class="rateImg">
       <img :src="nowImg" alt="">
