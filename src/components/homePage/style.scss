@@ -1,0 +1,240 @@
+@import '../../styles/variables';
+.homePage {
+  display: flex;
+  width: 1240px;
+  height: 100vh;
+  padding: 35px;
+  margin: 0 auto;
+}
+
+.keyPoint {
+  color: $pink;
+}
+
+.rateArea {
+  padding: 8px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rateText {
+  flex: 3;
+}
+
+.rateImg {
+  flex: 3;
+}
+
+h1 {
+  color: $pink;
+  margin-bottom: 25px;
+}
+
+.sub-title {
+  color: $violet;
+  padding: 5px 30px;
+  background-color: $lavender-dark;
+}
+
+h2 {
+  margin-top: 15px;
+  text-decoration: underline;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration-color: $lavender-dark;
+}
+
+.rateMsg {
+  flex: 1;
+  margin-top: 25px;
+  font-size: 18px;
+  padding: 20px;
+  width: 90%;
+  line-height: 1.4;
+  border: 1px solid $pink;
+}
+
+.skillArea {
+  padding: 8px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .step1,
+  .step4 {
+    flex: 1;
+  }
+  .step2,
+  .step3 {
+    flex: 2;
+  }
+}
+
+.eachSkill {
+  display: flex;
+  position: relative;
+  >* {
+    opacity: 0.3;
+  }
+  &.clickable {
+    >* {
+      opacity: 1;
+    }
+  }
+}
+
+.progress-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 15px 40px 0 40px;
+  border-style: solid;
+  border-color: $violet transparent transparent transparent;
+  opacity: 0.7 !important;
+  top: calc(100% - 15px);
+  left: 10px;
+}
+
+.progress-rect {
+  opacity: 0.7 !important;
+  position: absolute;
+  top: 86px;
+  left: 30px;
+  width: 40px;
+  height: calc(100% - 101px);
+  background-color: $violet;
+}
+
+.clickMask {
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+.progress-img {
+  text-align: center;
+  flex: 1;
+}
+
+.skill-body {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 15px;
+}
+
+.skill-detail {
+  width: 65px;
+  text-align: center;
+  .detail-img {
+    font-size: 40px;
+    cursor: pointer;
+    .img {
+      transition: all 0.1s ease-in;
+      background-color: $violet;
+      padding: 10px;
+      position: relative;
+    }
+    .completedTri {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 16px 16px 0;
+      border-color: transparent $lavender-dark transparent transparent;
+    }
+  }
+  &.isActive {
+    .img {
+      border: 1px solid $pink;
+      background-color: $lavender-dark;
+    }
+  }
+  &.isPartCompleted {
+    .img {
+      color: $lavender;
+    }
+  }
+}
+
+.detail-list {
+  margin-top: 13px;
+  font-size: 14px;
+}
+
+.noteArea {
+  padding: 8px;
+  flex: 1;
+}
+
+.note-container {
+  height: 100%;
+  border: 2px solid $pink;
+}
+
+.note-header {
+  height: 50%;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $lavender;
+  text-align: center;
+}
+
+.note-img {
+  font-size: 150px;
+}
+
+.note-category {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.note-title {
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.note-body {
+  height: 50%;
+  background-color: $lavender-dark;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.select-img {
+  font-size: 36px;
+  p {
+    font-size: 16px;
+  }
+}
+
+.select-body {
+  margin: 16px;
+}
+
+.eachSelect {
+  cursor: pointer;
+  margin: 5px auto;
+  width: 70%;
+  padding: 8px 10px;
+  border: 2px solid $w;
+  transition: all 0.1s ease-in;
+  &:hover,
+  &.checked {
+    background-color: $pink;
+    border: 2px solid $pink;
+    color: $w;
+  }
+}

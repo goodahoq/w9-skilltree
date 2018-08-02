@@ -1,0 +1,160 @@
+<div class="homePage">
+  <div class="rateArea">
+    <div class="rateText">
+      <h1>FRONT-END SKILL TREE</h1>
+      <span class="sub-title">CURRENT RANK</span>
+      <h2 v-if="nowRate==0">FRONT-END NOOB</h2>
+      <h2 v-if="nowRate==1">FRONT-END Beginnner</h2>
+      <h2 v-if="nowRate==2">FRONT-END Developer</h2>
+      <h2 v-if="nowRate==3">FRONT-END Master</h2>
+    </div>
+    <div class="rateImg">
+      <img :src="nowImg" alt="">
+    </div>
+    <div class="rateMsg">
+      <p v-if="nowRate==0">Welcome to aboard. Your mission is:
+        <span class="keyPoint">Collect the resources and learn the skills to upgrade the ship.</span> Good luck, captain!</p>
+      <p v-if="nowRate==1">
+        <strong>Congradulations! </strong>You become the
+        <span class="keyPoint">Front-end Beginnner”.</span>“ Keep searching the resources to upgrade to the next level.</p>
+      <p v-if="nowRate==2">
+        <strong>You’re doing well!</strong> Now you’re a
+        <span class="keyPoint">“Front-end Developer”.</span> It’s close to complete the upgrading program.
+        <br>Next level: Front-end Master.</p>
+      <p v-if="nowRate==3">
+        <strong>Excellent!</strong> You’re a
+        <span class="keyPoint">“Front-end Master”</span> now. But a new galary was just detected by the system. Captain, make your choice.</p>
+    </div>
+  </div>
+  <!-- {{isCategory('basic')}} {{isCategory('js')}} {{isCategory('css')}} {{isCategory('manager')}} -->
+  <div class="skillArea">
+    <div class="eachSkill step1" :class="{ clickable : isCategory('basic') }">
+      <div v-if="!isCategory('basic')" class="clickMask"></div>
+      <div class="progress-img">
+        <img src="@/assets/img-planet-basics.png" alt="">
+      </div>
+      <div v-if="isCategory('basic')" class="progress-rect"></div>
+      <div v-if="isCategory('basic')" class="progress-arrow"></div>
+      <div class="skill-body">
+        <!-- {{renderData('basic')}} -->
+        <div v-for="(item,index) in renderData('basic')" class="skill-detail" :class="{ isActive: nowDetail.id==item.id , isPartCompleted : (nowLength(item.recommend) <= item.recommend.length) && nowLength(item.recommend) != 0}">
+          <div class="detail-img" @click="showDetail(renderData('basic')[index])">
+            <span class="img" :class="'icon-sharp-'+ item.icon + '-24px'">
+              <span v-if="item.done" class="completedTri"></span>
+            </span>
+
+          </div>
+          <div class="detail-list">
+            <p>
+              <span class="icon-sharp-build-24px"></span>{{ nowLength(item.recommend) }}/{{ item.recommend.length }}</p>
+            <p>
+              <span class="icon-sharp-filter_tilt_shift-24px"></span>{{ nowLength(item.optional) }}/{{ item.optional.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eachSkill step2" :class="{ clickable : isCategory('css') }">
+      <div v-if="!isCategory('css')" class="clickMask"></div>
+      <div class="progress-img">
+        <img src="@/assets/img-planet-css.png" alt="">
+      </div>
+      <div v-if="isCategory('css')" class="progress-rect"></div>
+      <div v-if="isCategory('css')" class="progress-arrow"></div>
+      <div class="skill-body">
+        <div v-for="(item,index) in renderData('css')" class="skill-detail" :class="{ isActive: nowDetail.id==item.id , isPartCompleted : (nowLength(item.recommend) <= item.recommend.length) && nowLength(item.recommend) != 0}">
+          <div class="detail-img" @click="showDetail(renderData('css')[index])">
+            <span class="img" :class="'icon-sharp-'+ item.icon + '-24px'">
+              <span v-if="item.done" class="completedTri"></span>
+            </span>
+          </div>
+          <div class="detail-list">
+            <p>
+              <span class="icon-sharp-build-24px"></span>{{ nowLength(item.recommend) }}/{{ item.recommend.length }}</p>
+            <p>
+              <span class="icon-sharp-filter_tilt_shift-24px"></span>{{ nowLength(item.optional) }}/{{ item.optional.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eachSkill step3" :class="{ clickable : isCategory('js') }">
+      <div v-if="!isCategory('js')" class="clickMask"></div>
+      <div class="progress-img">
+        <img src="@/assets/img-planet-js.png" alt="">
+      </div>
+      <div v-if="isCategory('js')" class="progress-rect"></div>
+      <div v-if="isCategory('js')" class="progress-arrow"></div>
+      <div class="skill-body">
+        <div v-for="(item,index) in renderData('js')" class="skill-detail" :class="{ isActive: nowDetail.id==item.id , isPartCompleted : (nowLength(item.recommend) <= item.recommend.length) && nowLength(item.recommend) != 0}">
+          <div class="detail-img" @click="showDetail(renderData('js')[index])">
+            <span class="img" :class="'icon-sharp-'+ item.icon + '-24px'">
+              <span v-if="item.done" class="completedTri"></span>
+            </span>
+          </div>
+          <div class="detail-list">
+            <p>
+              <span class="icon-sharp-build-24px"></span>{{ nowLength(item.recommend) }}/{{ item.recommend.length }}</p>
+            <p>
+              <span class="icon-sharp-filter_tilt_shift-24px"></span>{{ nowLength(item.optional) }}/{{ item.optional.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eachSkill step4" :class="{ clickable : isCategory('manager') }">
+      <div v-if="!isCategory('manager')" class="clickMask"></div>
+      <div class="progress-img">
+        <img src="@/assets/img-planet-managers.png" alt="">
+      </div>
+      <div class="skill-body">
+        <div v-for="(item,index) in renderData('manager')" class="skill-detail" :class="{ isActive: nowDetail.id==item.id , isPartCompleted : (nowLength(item.recommend) <= item.recommend.length) && nowLength(item.recommend) != 0}">
+          <div class="detail-img" @click="showDetail(renderData('manager')[index])">
+            <span class="img" :class="'icon-sharp-'+ item.icon + '-24px'">
+              <span v-if="item.done" class="completedTri"></span>
+            </span>
+          </div>
+          <div class="detail-list">
+            <p>
+              <span class="icon-sharp-build-24px"></span>{{ nowLength(item.recommend) }}/{{ item.recommend.length }}</p>
+            <p>
+              <span class="icon-sharp-filter_tilt_shift-24px"></span>{{ nowLength(item.optional) }}/{{ item.optional.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="noteArea">
+    <div class="note-container">
+      <div class="note-header">
+        <div class="note-img">
+          <span :class="'icon-sharp-'+ nowDetail.icon + '-24px'"></span>
+        </div>
+        <div class="note-category">{{nowDetail.category}}</div>
+        <div class="note-title">{{nowDetail.title}}</div>
+      </div>
+      <div class="note-body">
+        <div v-if="nowDetail.recommend.length > 0" class="note-select">
+          <div class="note-recommended">
+            <div class="select-img">
+              <span class="icon-sharp-settings-24px"></span>
+              <p>RECOMMENDED</p>
+            </div>
+            <div class="select-body">
+              <div v-for="(item,index) in nowDetail.recommend" class="eachSelect" :class="{ checked:item.checked }" @click.stop="update(nowDetail.id , index , 'recommend')">{{ item.title }}</div>
+            </div>
+          </div>
+        </div>
+        <div v-if="nowDetail.optional.length > 0" class="note-select">
+          <div class="note-optional">
+            <div class="select-img">
+              <span class="icon-sharp-filter_tilt_shift-24px"></span>
+              <p>OPTIONAL</p>
+            </div>
+            <div class="select-body">
+              <div v-for="(item,index) in nowDetail.optional" class="eachSelect" :class="{ checked:item.checked }" @click.stop="update(nowDetail.id , index , 'optional')">{{ item.title }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <pre>{{nowDetail}}</pre> -->
+    </div>
+  </div>
+</div>
